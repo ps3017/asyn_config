@@ -1,0 +1,44 @@
+diff --git a/asyn/drvAsynSerial/drvAsynSerialPortWin32.c b/asyn/drvAsynSerial/drvAsynSerialPortWin32.c
+index 20fe15b8..6aa2b867 100644
+--- a/asyn/drvAsynSerial/drvAsynSerialPortWin32.c
++++ b/asyn/drvAsynSerial/drvAsynSerialPortWin32.c
+@@ -479,7 +479,7 @@ static asynStatus writeIt(void *drvPvt, asynUser *pasynUser,
+     const char *data, size_t numchars,size_t *nbytesTransfered)
+ {
+     ttyController_t *tty = (ttyController_t *)drvPvt;
+-    int thisWrite;
++    DWORD thisWrite;
+     int nleft = (int)numchars;
+     int timerStarted = 0;
+     BOOL ret;
+@@ -552,7 +552,7 @@ static asynStatus readIt(void *drvPvt, asynUser *pasynUser,
+     char *data, size_t maxchars,size_t *nbytesTransfered,int *gotEom)
+ {
+     ttyController_t *tty = (ttyController_t *)drvPvt;
+-    int thisRead;
++    DWORD thisRead;
+     int nRead = 0;
+     int timerStarted = 0;
+     COMMTIMEOUTS ctimeout;
+diff --git a/configure/RELEASE b/configure/RELEASE
+index fc38b286..aebd8956 100644
+--- a/configure/RELEASE
++++ b/configure/RELEASE
+@@ -3,7 +3,7 @@
+ # Define the following Required or Optional
+ # either in this file, or in a RELEASE.local
+ 
+-SUPPORT=/corvette/home/epics/support
++SUPPORT=C:/msys64/home/euaps/base-7.0.7/support
+ 
+ # Optional
+ # IPAC is only necessary if support for Greensprings IP488 is required
+@@ -29,7 +29,7 @@ SUPPORT=/corvette/home/epics/support
+ # Required
+ # EPICS_BASE 3.14.6 or later is required
+ # It can be obtained here: https://github.com/epics-base/epics-base
+-EPICS_BASE=/corvette/usr/local/epics/base-7.0.7
++EPICS_BASE=C:/msys64/home/euaps/base-7.0.7
+ 
+ -include $(TOP)/../RELEASE.local
+ -include $(TOP)/../RELEASE.$(EPICS_HOST_ARCH).local
